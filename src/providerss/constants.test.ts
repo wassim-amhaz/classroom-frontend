@@ -10,4 +10,8 @@ describe("API_URL (src/providerss/constants.ts)", () => {
     expect(() => new URL(API_URL)).not.toThrow();
     expect(new URL(API_URL).protocol).toBe("https:");
   });
+
+  it("has no trailing slash", () => {
+    expect(API_URL.endsWith("/")).toBe(false);
+  });
 });

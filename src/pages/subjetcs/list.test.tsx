@@ -132,6 +132,21 @@ describe("SubjectsList", () => {
     expect(lastCallConfig().refineCoreProps.filters.permanent).toEqual([]);
   });
 
+  it("removes the search filter again when the search field is cleared", async () => {
+    const user = userEvent.setup();
+    render(<SubjectsList />);
+
+    const input = screen.getByPlaceholderText("Search by name");
+    await user.type(input, "calc");
+    expect(lastCallConfig().refineCoreProps.filters.permanent).toEqual([
+      { field: "name", operator: "contains", value: "calc" },
+    ]);
+
+    await user.clear(input);
+
+    expect(lastCallConfig().refineCoreProps.filters.permanent).toEqual([]);
+  });
+
   it("combines the department and search filters when both are set", async () => {
     const user = userEvent.setup();
     render(<SubjectsList />);

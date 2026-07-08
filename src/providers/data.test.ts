@@ -35,6 +35,20 @@ describe("mock dataProvider (src/providers/data.ts)", () => {
       expect(result.total).toBe(MOCK_SUBJECTS.length);
       expect(result.data).toEqual(MOCK_SUBJECTS);
     });
+
+    it("returns the same MOCK_SUBJECTS array reference rather than a copy", async () => {
+      const result = await dataProvider.getList({ resource: "subjects" });
+
+      expect(result.data).toBe(MOCK_SUBJECTS);
+    });
+
+    it("returns an empty array (not undefined/null) for an empty resource string", async () => {
+      const result = await dataProvider.getList({ resource: "" });
+
+      expect(Array.isArray(result.data)).toBe(true);
+      expect(result.data).toEqual([]);
+      expect(result.total).toBe(0);
+    });
   });
 
   describe("unimplemented methods", () => {

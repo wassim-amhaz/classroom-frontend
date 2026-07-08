@@ -38,6 +38,11 @@ describe("DEPARTMENT_OPTIONS", () => {
       DEPARTMENTS
     );
   });
+
+  it("creates a distinct option object for every department (no shared references)", () => {
+    const uniqueRefs = new Set(DEPARTMENT_OPTIONS);
+    expect(uniqueRefs.size).toBe(DEPARTMENT_OPTIONS.length);
+  });
 });
 
 describe("MOCK_SUBJECTS", () => {

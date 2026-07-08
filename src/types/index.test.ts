@@ -48,4 +48,21 @@ describe("Subject type", () => {
       });
     });
   });
+
+  it("has no extraneous properties beyond the Subject shape in MOCK_SUBJECTS entries", () => {
+    const allowedKeys = new Set<keyof Subject>([
+      "id",
+      "name",
+      "code",
+      "description",
+      "department",
+      "createdAt",
+    ]);
+
+    MOCK_SUBJECTS.forEach((subject) => {
+      Object.keys(subject).forEach((key) => {
+        expect(allowedKeys.has(key as keyof Subject)).toBe(true);
+      });
+    });
+  });
 });

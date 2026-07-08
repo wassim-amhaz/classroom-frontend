@@ -49,4 +49,12 @@ describe("REST dataProvider wiring (src/providerss/data.ts)", () => {
     expect(dataProvider).toBe(mockDataProvider);
     expect(kyInstance).toBe(mockKyInstance);
   });
+
+  it("does not recreate the provider on repeated imports of the already-loaded module", async () => {
+    const first = await import("./data");
+    const second = await import("./data");
+
+    expect(createSimpleRestDataProviderMock).toHaveBeenCalledTimes(1);
+    expect(first.dataProvider).toBe(second.dataProvider);
+  });
 });
