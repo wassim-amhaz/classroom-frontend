@@ -1,3 +1,5 @@
+import {Subject} from "@/types";
+
 export const DEPARTMENTS = [
     'IT', 'HR', 'Finance', 'Marketing', 'Computer Science', 'Mathematics', 'Physics'];
 
@@ -6,7 +8,7 @@ export const DEPARTMENT_OPTIONS = DEPARTMENTS.map((dept)=>({
     label: dept,
 }));
 
-export const MOCK_SUBJECTS = [
+export const MOCK_SUBJECTS:Subject[] = [
     {
         id: 1,
         code: "CS101",
