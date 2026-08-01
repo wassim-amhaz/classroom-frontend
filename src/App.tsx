@@ -2,8 +2,7 @@ import {Refine, } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
-import routerProvider, {
-  DocumentTitleHandler,
+import routerProvider, {DocumentTitleHandler,
   UnsavedChangesNotifier,
 } from "@refinedev/react-router";
 import {BrowserRouter, Outlet, Route, Routes} from "react-router";
